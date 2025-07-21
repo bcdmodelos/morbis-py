@@ -1,0 +1,23 @@
+# Arquivos de configuração sensíveis
+.env
+back/.env
+
+# Dados brutos e processados
+data/
+*.csv
+*.dbf
+*.dbc
+*.zip
+
+# Diretórios temporários
+__pycache__/
+*.pyc
+
+# Ambientes virtuais
+.venv/
+env/
+venv/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
