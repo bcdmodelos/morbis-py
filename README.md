@@ -21,9 +21,5 @@ Rodar python3 db/create_tables.py
 ```
 
 ```bash
-load_data.py
-```
-
-```bash
-python3 db/load_data.py
+Rodar python3 db/load_data.py
 ```
