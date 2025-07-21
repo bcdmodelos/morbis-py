@@ -1,26 +1,19 @@
-version: "3.9"
-
 services:
   db:
     image: postgres:16.9
     container_name: morbis_db
     restart: always
     ports:
-      - "${DOCKER_DB_PORT}:5432"
+      - "${POSTGRES_PORT}:5432"
     environment:
-      POSTGRES_DB: "${DOCKER_DB_POSTGRES_DB}"
-      POSTGRES_USER: "${DOCKER_DB_POSTGRES_USER}"
-      POSTGRES_PASSWORD: "${DOCKER_DB_POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
     volumes:
-      - "${DOCKER_DB_VOLUME_DATA}:/var/lib/postgresql/data"
+      - ./pgdata:/var/lib/postgresql/data
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - morbis-net
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DOCKER_DB_POSTGRES_USER}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
 networks:
   morbis-net:

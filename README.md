@@ -13,7 +13,7 @@ cp default.env .env
 Configurar o .env do back
 
 ```bash
-Rodar docker-compose up -d
+Rodar docker-compose --env-file back/.env up -d
 ```
 
 ```bash

@@ -2,6 +2,9 @@
 .env
 back/.env
 
+# Diretório de dados do PostgreSQL
+pgdata/
+
 # Dados brutos e processados
 data/
 *.csv
