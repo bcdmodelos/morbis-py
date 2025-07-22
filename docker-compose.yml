@@ -15,6 +15,34 @@ services:
     networks:
       - morbis-net
 
+  backend:
+    build: ./back
+    container_name: morbis_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./back:/app
+    env_file:
+      - ./back/.env
+    networks:
+      - morbis-net
+
+  frontend:
+    build: ./front
+    container_name: morbis_frontend
+    restart: always
+    ports:
+      - "8050:8050"
+    depends_on:
+      - backend
+    volumes:
+      - ./front:/app
+    networks:
+      - morbis-net
+
 networks:
   morbis-net:
 

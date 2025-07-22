@@ -14,6 +14,11 @@ Configurar o .env do back
 
 ```bash
 Rodar docker-compose --env-file back/.env up -d
+
+ou 
+
+Rodar docker-compose --env-file back/.env up --build -d
+
 ```
 
 ```bash
