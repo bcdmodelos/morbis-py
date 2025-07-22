@@ -31,7 +31,9 @@ services:
       - morbis-net
 
   frontend:
-    build: ./front
+    build:
+      context: .
+      dockerfile: front/Dockerfile
     container_name: morbis_frontend
     restart: always
     ports:
@@ -40,6 +42,7 @@ services:
       - backend
     volumes:
       - ./front:/app
+      - ./data:/app/data
     networks:
       - morbis-net
 

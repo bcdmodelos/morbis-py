@@ -2,22 +2,19 @@ from dash import html
 
 def render_header():
     return html.Div(
+        [
+            html.H2("MorbIS - Mortality Information System", style={"color": "white", "margin": "0"}),
+            html.Div([
+                html.A("Home", href="#", style={"margin-right": "15px", "color": "white"}),
+                html.A("Mapa", href="#", style={"margin-right": "15px", "color": "white"}),
+                html.A("Relatórios", href="#", style={"color": "white"})
+            ], style={"display": "flex"})
+        ],
         style={
-            "backgroundColor": "#2c3e50",
-            "color": "white",
-            "padding": "15px",
+            "background-color": "#2c3e50",
+            "padding": "10px 20px",
             "display": "flex",
-            "alignItems": "center",
-            "justifyContent": "space-between"
-        },
-        children=[
-            html.H2("MorbIS", style={"margin": "0"}),
-            html.Div(
-                children=[
-                    html.A("Home", href="/", style={"color": "white", "marginRight": "15px"}),
-                    html.A("Mapa", href="/map", style={"color": "white", "marginRight": "15px"}),
-                    html.A("Relatórios", href="/reports", style={"color": "white"})
-                ]
-            )
-        ]
+            "justify-content": "space-between",
+            "align-items": "center"
+        }
     )
