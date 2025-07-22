@@ -3,7 +3,8 @@ from app.core.database import get_connection
 
 router = APIRouter()
 
-@router.get("/obitos/maior_causa/{estado}/{ano}")
+# http://localhost:8000/api/obitos_maior_causa/paraiba/2005
+@router.get("/obitos_maior_causa/{estado}/{ano}")
 async def maior_causa(estado: str, ano: str):
     try:
         conn = get_connection()
@@ -21,7 +22,6 @@ async def maior_causa(estado: str, ano: str):
 
         cur.execute(query, (ano,))
         result = cur.fetchone()
-
         cur.close()
         conn.close()
 
@@ -36,3 +36,4 @@ async def maior_causa(estado: str, ano: str):
             return {"message": "Nenhum dado encontrado para os filtros informados"}
     except Exception as e:
         return {"error": str(e)}
+

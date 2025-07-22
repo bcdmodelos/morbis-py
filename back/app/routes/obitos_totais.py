@@ -3,7 +3,8 @@ from app.core.database import get_connection
 
 router = APIRouter()
 
-@router.get("/obitos/{estado}")
+# http://localhost:8000/api/obitos_totais/paraiba
+@router.get("/obitos_totais/{estado}")
 def contar_obitos(estado: str):
     tabela = f"data_{estado.lower()}"
     
