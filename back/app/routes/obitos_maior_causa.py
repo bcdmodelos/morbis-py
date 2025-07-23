@@ -36,4 +36,4 @@ async def maior_causa(estado: str, ano: str):
             return {"message": "Nenhum dado encontrado para os filtros informados"}
     except Exception as e:
         return {"error": str(e)}
-
+    
