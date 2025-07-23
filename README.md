@@ -28,3 +28,12 @@ Rodar python3 db/create_tables.py
 ```bash
 Rodar python3 db/load_data.py
 ```
+
+```bash
+Criar base no docker
+
+docker exec -it morbis_backend bash
+
+python db/create_cid_table.py
+
+```
