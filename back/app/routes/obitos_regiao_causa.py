@@ -1,17 +1,19 @@
 from fastapi import APIRouter, HTTPException
 from app.core.database import get_connection
 from app.core.regioes import REGIOES
+from app.core.regioes import ESTADOS_NOMES
 
 router = APIRouter()
 
 # Exemplo: http://localhost:8000/api/obitos_regiao_causa/nordeste/2005/I21
+@router.get("/obitos_regiao_causa/{regiao}/{ano}/{causa}")
 def obitos_por_regiao_causa(regiao: str, ano: str, causa: str):
     try:
         regiao = regiao.lower()
         if regiao not in REGIOES:
             raise HTTPException(status_code=400, detail="Região inválida")
 
-        estados = REGIOES[regiao]  # Já vem com "data_..."
+        estados = REGIOES[regiao]
         conn = get_connection()
         cur = conn.cursor()
 
@@ -27,13 +29,14 @@ def obitos_por_regiao_causa(regiao: str, ano: str, causa: str):
             result = cur.fetchone()
             count = result[0] if result else 0
             total_regiao += count
-            detalhes_estados.append({"estado": tabela, "total_obitos": count})
+            nome_estado = ESTADOS_NOMES.get(tabela, tabela)
+            detalhes_estados.append({"estado": nome_estado, "total_obitos": count})
 
         cur.close()
         conn.close()
 
         return {
-            "regiao": regiao,
+            "regiao": regiao.capitalize(),
             "ano": ano,
             "causa": causa,
             "total_obitos_regiao": total_regiao,
