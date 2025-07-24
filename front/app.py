@@ -7,7 +7,6 @@ from components.header import render_header
 from components.map import render_map
 from components.dashboard import render_dashboard
 from components.cid10 import render_cid10_page
-from components.cid9 import render_cid9_page
 from components.sobre import render_sobre_page
 
 app = dash.Dash(__name__, title="MorbIS", external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -31,8 +30,6 @@ def display_page(pathname):
         ])
     elif pathname == '/cid10':
         return render_cid10_page()
-    elif pathname == '/cid9':
-        return render_cid9_page()
     elif pathname == '/sobre':
         return render_sobre_page()
     else:
