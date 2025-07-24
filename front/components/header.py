@@ -1,4 +1,4 @@
-from dash import html
+from dash import dcc, html
 
 def render_header():
     return html.Div(
@@ -6,10 +6,10 @@ def render_header():
             html.H2("MorbIS - Mortality Information System", style={"color": "white", "margin": "0"}),
             html.Div([
                 html.A("Home", href="#", style={"margin-right": "15px", "color": "white"}),
-                html.A("Mapa", href="#", style={"margin-right": "15px", "color": "white"}),
-                html.A("CID-10", href="#", style={"margin-right": "15px", "color": "white"}),
-                html.A("CID-9", href="#", style={"margin-right": "15px", "color": "white"}),
-                html.A("Sobre", href="#", style={"color": "white"})
+                html.A("Mapa", href="/mapa", style={"margin-right": "15px", "color": "white"}),
+                dcc.Link("CID-10", href="/cid10", style={"margin-right": "15px", "color": "white"}),
+                html.A("CID-9", href="/cid9", style={"margin-right": "15px", "color": "white"}),
+                html.A("Sobre", href="/sobre", style={"color": "white"})
             ], style={"display": "flex"})
         ],
         style={
