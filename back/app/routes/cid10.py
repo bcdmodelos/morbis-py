@@ -11,7 +11,7 @@ def get_cid10():
     query = """
         SELECT cid10, cat, subcat, descr
         FROM cid_10
-        ORDER BY cid10;
+        ORDER BY id;
     """
     cur.execute(query)
     rows = cur.fetchall()
@@ -19,14 +19,28 @@ def get_cid10():
     conn.close()
 
     categorias = {}
-    for cid10, cat, subcat, descr in rows:
-        if cat not in categorias:
-            categorias[cat] = []
-        categorias[cat].append({
-            "cid10": cid10,
-            "subcat": subcat,
-            "descricao": descr
-        })
+    categoria_atual = None
 
-    result = [{"categoria": cat, "itens": itens} for cat, itens in categorias.items()]
+    for cid10, cat, subcat, descr in rows:
+        if cat == 'S':  # É uma categoria
+            categoria_atual = cid10
+            categorias[categoria_atual] = {
+                "descricao": descr,
+                "subcategorias": []
+            }
+        elif subcat == 'S' and categoria_atual:
+            categorias[categoria_atual]["subcategorias"].append({
+                "cid10": cid10,
+                "descricao": descr
+            })
+
+    result = [
+        {
+            "categoria": cat,
+            "descricao": dados["descricao"],
+            "subcategorias": dados["subcategorias"]
+        }
+        for cat, dados in categorias.items()
+    ]
     return {"categorias": result}
+

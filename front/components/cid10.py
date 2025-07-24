@@ -2,7 +2,7 @@ from dash import html
 import dash_bootstrap_components as dbc
 import requests
 
-API_URL = "http://backend:8000/api/cid10"  # Docker: nome do serviço
+API_URL = "http://backend:8000/api/cid10"
 
 def render_cid10_page():
     try:
@@ -15,16 +15,19 @@ def render_cid10_page():
             return html.Div("Nenhum dado disponível", style={"color": "orange"})
 
         accordion_items = []
-        for i, categoria in enumerate(data):
-            sub_itens = [html.Li(f"{item['subcat']} - {item['descricao']}") for item in categoria["itens"]]
+        for categoria in data:
+            sub_itens = [
+                html.Li(f"{item['cid10']} - {item['descricao']}") 
+                for item in categoria["subcategorias"]
+            ]
 
             accordion_items.append(
                 dbc.AccordionItem(
                     [
-                        html.H5(f"Categoria {categoria['categoria']}", style={"margin-bottom": "10px"}),
+                        html.H5(f"{categoria['categoria']} - {categoria['descricao']}", style={"margin-bottom": "10px"}),
                         html.Ul(sub_itens)
                     ],
-                    title=f"Categoria {categoria['categoria']}"
+                    title=f"{categoria['categoria']} - {categoria['descricao']}"
                 )
             )
 
