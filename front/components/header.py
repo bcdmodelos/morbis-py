@@ -8,7 +8,8 @@ def render_header():
                 html.A("Home", href="#", style={"margin-right": "15px", "color": "white"}),
                 html.A("Mapa", href="#", style={"margin-right": "15px", "color": "white"}),
                 html.A("CID-10", href="#", style={"margin-right": "15px", "color": "white"}),
-                html.A("Relatórios", href="#", style={"color": "white"})
+                html.A("CID-9", href="#", style={"margin-right": "15px", "color": "white"}),
+                html.A("Sobre", href="#", style={"color": "white"})
             ], style={"display": "flex"})
         ],
         style={
