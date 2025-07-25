@@ -9,7 +9,8 @@ from app.routes import (estados,
                         obitos_bottom10,
                         obitos_regiao,
                         obitos_regiao_causa,
-                        cid10)
+                        cid10,
+                        download)
 
 app = FastAPI(title="MORBIS API")
 
@@ -24,6 +25,7 @@ app.include_router(obitos_bottom10.router, prefix="/api")
 app.include_router(obitos_regiao.router, prefix="/api")
 app.include_router(obitos_regiao_causa.router, prefix="/api")
 app.include_router(cid10.router, prefix="/api")
+app.include_router(download.router, prefix="/api") 
 
 @app.get("/")
 def root():

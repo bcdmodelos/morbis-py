@@ -10,7 +10,14 @@ from components.cid10 import render_cid10_page
 from components.sobre import render_sobre_page
 from components.dados import render_dados_page
 
-app = dash.Dash(__name__, title="MorbIS", external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(
+    __name__,
+    title="MorbIS",
+    external_stylesheets=[
+        dbc.themes.BOOTSTRAP,
+        "https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    ]
+)
 app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
@@ -40,4 +47,3 @@ def display_page(pathname):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8050, debug=False)
-
