@@ -8,6 +8,7 @@ from components.map import render_map
 from components.dashboard import render_dashboard
 from components.cid10 import render_cid10_page
 from components.sobre import render_sobre_page
+from components.dados import render_dados_page
 
 app = dash.Dash(__name__, title="MorbIS", external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.config.suppress_callback_exceptions = True
@@ -30,6 +31,8 @@ def display_page(pathname):
         ])
     elif pathname == '/cid10':
         return render_cid10_page()
+    elif pathname == '/dados':
+        return render_dados_page()
     elif pathname == '/sobre':
         return render_sobre_page()
     else:

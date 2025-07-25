@@ -8,6 +8,7 @@ def render_header():
                 html.A("Home", href="#", style={"margin-right": "15px", "color": "white"}),
                 html.A("Mapa", href="/mapa", style={"margin-right": "15px", "color": "white"}),
                 dcc.Link("CID-10", href="/cid10", style={"margin-right": "15px", "color": "white"}),
+                html.A("Dados", href="/dados", style={"margin-right": "15px", "color": "white"}),
                 html.A("Sobre", href="/sobre", style={"color": "white"})
             ], style={"display": "flex"})
         ],
