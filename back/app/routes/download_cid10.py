@@ -5,7 +5,7 @@ import io
 
 router = APIRouter()
 
-@router.get("/download/cid10")
+@router.get("/download_cid10")
 def download_cid10():
     conn = get_connection()
     query = """

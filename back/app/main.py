@@ -10,7 +10,8 @@ from app.routes import (estados,
                         obitos_regiao,
                         obitos_regiao_causa,
                         cid10,
-                        download)
+                        download_cid10,
+                        download_obitos)
 
 app = FastAPI(title="MORBIS API")
 
@@ -25,7 +26,8 @@ app.include_router(obitos_bottom10.router, prefix="/api")
 app.include_router(obitos_regiao.router, prefix="/api")
 app.include_router(obitos_regiao_causa.router, prefix="/api")
 app.include_router(cid10.router, prefix="/api")
-app.include_router(download.router, prefix="/api") 
+app.include_router(download_cid10.router, prefix="/api", tags=["Download CID-10"])
+app.include_router(download_obitos.router, prefix="/api", tags=["Download Óbitos"])
 
 @app.get("/")
 def root():
