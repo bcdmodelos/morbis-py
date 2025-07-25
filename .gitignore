@@ -5,10 +5,10 @@ back/.env
 # Diretório de dados do PostgreSQL
 pgdata/
 
-# Ignorar tudo dentro de data
+# Ignora tudo dentro de data
 data/**
 
-# Mas manter as pastas principais
+# Mas mantém a estrutura das pastas
 !data/
 !data/cid/
 !data/data_datasus/
@@ -17,12 +17,5 @@ data/**
 !data/dtb/uf/
 !data/ibge/
 
-# Permitir apenas arquivos de estrutura vazia (por exemplo, .gitkeep)
-data/**/*.csv
-data/**/*.dbf
-data/**/*.dbc
-data/**/*.zip
-data/**/*.cpg
-data/**/*.prj
-data/**/*.shp
-data/**/*.shx
+# Permite apenas arquivos .gitkeep
+!data/**/.gitkeep
