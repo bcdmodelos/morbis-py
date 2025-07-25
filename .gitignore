@@ -5,22 +5,24 @@ back/.env
 # Diretório de dados do PostgreSQL
 pgdata/
 
-# Dados brutos e processados
-data/
-*.csv
-*.dbf
-*.dbc
-*.zip
+# Ignorar tudo dentro de data
+data/**
 
-# Diretórios temporários
-__pycache__/
-*.pyc
+# Mas manter as pastas principais
+!data/
+!data/cid/
+!data/data_datasus/
+!data/dtb/
+!data/dtb/municipios/
+!data/dtb/uf/
+!data/ibge/
 
-# Ambientes virtuais
-.venv/
-env/
-venv/
-
-# Arquivos do sistema
-.DS_Store
-Thumbs.db
+# Permitir apenas arquivos de estrutura vazia (por exemplo, .gitkeep)
+data/**/*.csv
+data/**/*.dbf
+data/**/*.dbc
+data/**/*.zip
+data/**/*.cpg
+data/**/*.prj
+data/**/*.shp
+data/**/*.shx
