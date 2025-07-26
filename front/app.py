@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output
 from components.header import render_header
 from components.map import render_map
 from components.dashboard import render_dashboard
-from components.cid10 import render_cid10_page
+from components.cid import render_cid_page
 from components.sobre import render_sobre_page
 from components.dados import render_dados_page
 
@@ -40,8 +40,8 @@ def display_page(pathname):
                 render_dashboard()
             ], style={"display": "flex", "flex-direction": "row", "height": "calc(100vh - 120px)"})
         ])
-    elif pathname == '/cid10':
-        return render_cid10_page()
+    elif pathname == '/cid':
+        return render_cid_page()
     elif pathname == '/dados':
         return render_dados_page()
     elif pathname == '/sobre':

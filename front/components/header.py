@@ -13,7 +13,7 @@ def render_header():
             html.Div([
                 html.A("Home", href="#", style=link_style),
                 html.A("Mapa", href="/mapa", style=link_style),
-                dcc.Link("CID-10", href="/cid10", style=link_style),
+                dcc.Link("CID", href="/cid", style=link_style),
                 html.A("Dados", href="/dados", style=link_style),
                 html.A("Sobre", href="/sobre", style={"color": "white", "text-decoration": "none"})
             ], style={"display": "flex"})

@@ -39,44 +39,93 @@ def render_dados_page():
     return html.Div([
         html.H3("Download de dados", style={"margin-bottom": "20px"}),
 
-
-        # Card CID-10
-        dbc.Card(
-            dbc.CardBody([
-                html.H5("CID-10", className="card-title"),
-                html.P("Arquivo com categorias e subcategorias CID-10.", className="card-text"),
-                dbc.Button(
-                    [html.I(className="fas fa-download", style={"margin-right": "10px"}), "Baixar CSV"],
-                    color="primary",
-                    href=f"{API_BASE_URL}/download_cid10",
-                    external_link=True
-                )
-            ]),
-            style={"width": "50%", "margin-bottom": "20px"}
-        ),
-
-        # Card Óbitos por Estado
-        dbc.Card(
-            dbc.CardBody([
-                html.H5("Óbitos por Estado", className="card-title"),
-                html.P("Selecione um estado para baixar os dados de óbitos.", className="card-text"),
-                dcc.Dropdown(
-                    id="dropdown-estado",
-                    options=estados,
-                    placeholder="Selecione um estado...",
-                    style={"margin-bottom": "15px"}
+        dbc.Row([
+            # Coluna Esquerda
+            dbc.Col([
+                # Card CID-10
+                dbc.Card(
+                    dbc.CardBody([
+                        html.H5("CID-10", className="card-title"),
+                        html.P("Arquivo com categorias e subcategorias CID-10.", className="card-text"),
+                        dbc.Button(
+                            [html.I(className="fas fa-download", style={"margin-right": "10px"}), "Baixar CSV"],
+                            color="primary",
+                            href=f"{API_BASE_URL}/download_cid10",
+                            external_link=True
+                        )
+                    ]),
+                    style={"margin-bottom": "20px"}
                 ),
-                dbc.Button(
-                    [html.I(className="fas fa-download", style={"margin-right": "10px"}), "Baixar CSV"],
-                    color="primary",
-                    id="btn-download",
-                    href="#",
-                    external_link=True,
-                    disabled=True
-                )
 
-            ]),
-            style={"width": "50%"}
-        )
+                # Card Óbitos por Estado
+                dbc.Card(
+                    dbc.CardBody([
+                        html.H5("Óbitos por Estado (CID-10)", className="card-title"),
+                        html.P("Selecione um estado para baixar os dados de óbitos (CID-10).", className="card-text"),
+                        dcc.Dropdown(
+                            id="dropdown-estado-1",
+                            options=estados,
+                            placeholder="Selecione um estado...",
+                            style={"margin-bottom": "15px"}
+                        ),
+                        dbc.Button(
+                            [html.I(className="fas fa-download", style={"margin-right": "10px"}), "Baixar CSV"],
+                            color="primary",
+                            id="btn-download-1",
+                            href="#",
+                            external_link=True,
+                            disabled=True
+                        )
+                    ])
+                )
+            ], width=6),
+
+            # Coluna Direita
+            dbc.Col([
+                # Card CID-9
+                dbc.Card(
+                    dbc.CardBody([
+                        html.H5("CID-9", className="card-title"),
+                        html.P("Arquivos com categorias CID-9 e CID-9-BR.", className="card-text"),
+                        dbc.Button(
+                            [html.I(className="fas fa-download", style={"margin-right": "10px"}), "Baixar CID-9"],
+                            color="primary",
+                            href="#",  # Ajustar depois para API
+                            external_link=True,
+                            style={"margin-right": "10px"}
+                        ),
+                        dbc.Button(
+                            [html.I(className="fas fa-download", style={"margin-right": "10px"}), "Baixar CID-9-BR"],
+                            color="primary",
+                            href="#",  # Ajustar depois para API
+                            external_link=True
+                        )
+                    ]),
+                    style={"margin-bottom": "20px"}
+                ),
+
+                # Card Óbitos por Estado (CID-9)
+                dbc.Card(
+                    dbc.CardBody([
+                        html.H5("Óbitos por Estado (CID-9)", className="card-title"),
+                        html.P("Selecione um estado para baixar os dados de óbitos (CID-9).", className="card-text"),
+                        dcc.Dropdown(
+                            id="dropdown-estado-2",
+                            options=estados,
+                            placeholder="Selecione um estado...",
+                            style={"margin-bottom": "15px"}
+                        ),
+                        dbc.Button(
+                            [html.I(className="fas fa-download", style={"margin-right": "10px"}), "Baixar CSV"],
+                            color="primary",
+                            id="btn-download-2",
+                            href="#",
+                            external_link=True,
+                            disabled=True
+                        )
+                    ])
+                )
+            ], width=6),
+        ])
     ], style={"padding": "20px"})
 

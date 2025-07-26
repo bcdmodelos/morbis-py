@@ -4,7 +4,7 @@ import requests
 
 API_URL = "http://backend:8000/api/cid10"
 
-def render_cid10_page():
+def render_cid_page():
     # Busca os dados da API
     try:
         response = requests.get(API_URL)
